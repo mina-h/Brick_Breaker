@@ -5,15 +5,17 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float velocity;
-    public float xLimit;
+    private float xLimit;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Camera cam = Camera.main;
+        float platformWidth = GetComponent<SpriteRenderer>().bounds.extents.x;  //the same as: bound.size.x / 2; o
+        xLimit = cam.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x - platformWidth;
     }
 
-    // Update is called once per frame
-    void Update()
+        // Update is called once per frame
+        void Update()
     {
         Transform t = GetComponent<Transform>();
         float mouseXmove = Input.GetAxis("Mouse X"); 
