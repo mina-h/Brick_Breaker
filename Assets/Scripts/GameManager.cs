@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         //SceneManager.LoadScene("SampleScene");
         instance.canvas.SetActive(true);
         Destroy(instance.ball.gameObject);
-        Destroy(instance.player);
+       // Destroy(instance.player);
         instance.stars.fillAmount = points / (float)totalNumberOfBlocks;
     }
 

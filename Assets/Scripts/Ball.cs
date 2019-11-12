@@ -30,7 +30,7 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collider)
     {
-
+        //ButtonInput buttonInput = collider.gameObject.GetComponent<ButtonInput>();
         Collider collider1 = collider.gameObject.GetComponent<Collider>();
         Player player = collider.gameObject.GetComponent<Player>();
         Vector2 normal = collider.contacts[0].normal;
@@ -56,7 +56,7 @@ public class Ball : MonoBehaviour
                 isGameOver = true;
             }
         }
-        else
+        else //if (buttonInput != null)
         {
             SpriteRenderer renderer = collider.gameObject.GetComponent<SpriteRenderer>();
             Vector3 brickPosition = collider.gameObject.transform.position;
@@ -66,6 +66,8 @@ public class Ball : MonoBehaviour
             GameObject ourParticles = (GameObject)Instantiate(brickParticles, particleInstantiationPoint , Quaternion.identity); //quaternion.identity means no rotation))
 
             ParticleSystem particleSystem = ourParticles.GetComponent<ParticleSystem>();
+
+            //destrpying the blocks and the particles
             Destroy(collider.gameObject);
             Destroy(ourParticles, particleSystem.main.startLifetimeMultiplier + particleSystem.main.duration); //the time  u destroy anything t seconds after calling the method
             GameManager.points++;

@@ -14,7 +14,7 @@ public class BlockCreator : MonoBehaviour
     {
         CreateBlocksGroup();
     }
-
+    
 
     void CreateBlocksGroup()
     {
